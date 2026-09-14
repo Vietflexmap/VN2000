@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "MD Map – WebGIS VN2000 hiện trường",
-  "short_name": "MD Map",
+  "name": "GISVN – WebGIS VN2000 hiện trường",
+  "short_name": "GISVN",
   "description": "Tọa độ, mốc, đo đạc, dữ liệu GIS và tuyến VN2000 ngay trên trình duyệt.",
   "lang": "vi",
   "dir": "ltr",

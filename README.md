@@ -1,4 +1,4 @@
-# MD Map – WebGIS VN2000 hiện trường
+# GISVN – WebGIS VN2000 hiện trường
 
 Ứng dụng WebGIS thuần HTML/CSS/JavaScript, tối ưu cho GitHub Pages và điện thoại ngoài thực địa. Không cần backend để mở bản đồ, quy đổi tọa độ, quản lý mốc, đo đạc hoặc đọc file cục bộ.
 

@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5, viewport-fit=cover, user-scalable=yes">
-<title>MD Map – WebGIS VN2000 hiện trường</title>
+<title>GISVN – WebGIS VN2000 hiện trường</title>
 <meta name="description" content="WebGIS VN2000 dành cho đo đạc hiện trường: tọa độ, mốc, đo, dữ liệu KML/KMZ/DXF/GPX và tuyến.">
 <meta name="theme-color" content="#0b6bcb">
 <meta name="color-scheme" content="light">
@@ -11,7 +11,7 @@
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="MD Map">
+<meta name="apple-mobile-web-app-title" content="GISVN">
 <link rel="manifest" href="./manifest.webmanifest">
 <link rel="icon" href="./icons/icon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="./icons/icon-192.png" sizes="192x192" type="image/png">
@@ -929,6 +929,86 @@
     #drawerBackdrop{display:block!important;}
   }
   @media (max-width:420px){.toolDrawerGrid{grid-template-columns:1fr}.toolLink{min-height:67px}}
+
+  /* V1.48 — GISVN: tác vụ hiện trường rõ ràng, chạm tốt và thích ứng mọi màn hình. */
+  .brand .mark{
+    background:linear-gradient(145deg,#0759aa 0%,#0b6bcb 68%,#1284d8 100%);
+    border:1px solid rgba(7,89,170,.14);box-shadow:0 5px 14px rgba(11,107,203,.18);
+  }
+  .brand .mark svg{width:29px;height:29px;filter:drop-shadow(0 1px 1px rgba(0,42,82,.16));}
+  .brandWords .txt{color:#12324f;letter-spacing:.035em;}
+  .brandWords small{font-size:9px;font-weight:700;}
+
+  .toolLink{transition:background .16s ease,border-color .16s ease,transform .16s ease,box-shadow .16s ease;}
+  .toolLink .toolGlyph{border:1px solid #d2e6fa;background:linear-gradient(145deg,#f4f9ff,#e6f2ff);}
+  .toolLink .toolGlyph svg,.toolQuick svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+  .toolQuick{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;transition:background .16s ease,color .16s ease,border-color .16s ease;}
+  .toolQuick svg{width:20px;height:20px;}
+
+  #btnSavePointDock.tabSaveBtn{
+    position:absolute;z-index:1009;left:auto;right:22px;top:auto;bottom:44px;
+    width:132px;height:54px;margin:0;padding:6px 9px 6px 7px;
+    border:1px solid #b9e6d6;border-radius:16px;background:rgba(255,255,255,.97);color:#12324f;
+    box-shadow:0 10px 26px rgba(15,61,91,.18),0 2px 7px rgba(15,157,114,.16);
+    display:flex!important;flex-direction:row;align-items:center;justify-content:flex-start;gap:8px;
+    text-transform:none;font-size:inherit;cursor:grab;touch-action:none;user-select:none;-webkit-user-select:none;
+    transition:box-shadow .16s ease,transform .16s ease,border-color .16s ease;
+  }
+  #btnSavePointDock .savePointIcon{
+    width:38px;height:38px;flex:none;border-radius:12px;background:linear-gradient(145deg,#12a979,#087c59);
+    color:#fff;display:grid;place-items:center;box-shadow:0 4px 10px rgba(15,157,114,.24);
+  }
+  #btnSavePointDock .savePointIcon svg{width:23px;height:23px;}
+  #btnSavePointDock .savePointCopy{display:flex;min-width:0;flex:1;flex-direction:column;align-items:flex-start;line-height:1.1;}
+  #btnSavePointDock .savePointCopy b{font-size:12px;font-weight:850;white-space:nowrap;}
+  #btnSavePointDock .savePointCopy small{margin-top:4px;color:#60758b;font-size:8.5px;font-weight:650;white-space:nowrap;}
+  #btnSavePointDock .savePointGrip{width:8px;display:grid;grid-template-columns:repeat(2,3px);gap:3px 2px;flex:none;opacity:.52;}
+  #btnSavePointDock .savePointGrip i{width:3px;height:3px;border-radius:50%;background:#60758b;display:block;}
+  #btnSavePointDock.dragging{cursor:grabbing;border-color:#6fcdb0;box-shadow:0 15px 34px rgba(15,61,91,.24);transform:scale(1.025);transition:none;}
+  #btnSavePointDock:focus-visible{outline:3px solid rgba(11,107,203,.28);outline-offset:3px;}
+
+  @media (hover:hover) and (pointer:fine){
+    .toolLink:hover{transform:translateY(-1px);box-shadow:0 6px 15px rgba(20,34,53,.08);}
+    #btnSavePointDock:hover{border-color:#72cfb2;box-shadow:0 12px 30px rgba(15,61,91,.22),0 3px 9px rgba(15,157,114,.18);}
+  }
+  @media (max-width:860px){
+    .brand{gap:7px;min-width:0;}
+    .brandWords{display:flex;}
+    .brandWords .txt{font-size:16px;}
+    .brandWords small{display:none;}
+    #appVerBadge{display:none;}
+    .tabbtn{min-height:58px;font-size:10.5px;}
+    .tabbtn svg{width:22px;height:22px;}
+    #sheet.expanded .panel:not([hidden]){max-height:min(64dvh,calc(var(--real-vh,100dvh) - 148px));}
+    .btn,.btn.block{min-height:42px;font-size:12px;padding:8px 10px;}
+    .tile,.actbtn{min-height:44px;font-size:10px;}
+    label{font-size:11.5px;}
+    .note{font-size:10.5px;line-height:1.45;}
+    #btnSavePointDock.tabSaveBtn{
+      z-index:1045;right:calc(12px + env(safe-area-inset-right));bottom:calc(80px + env(safe-area-inset-bottom));
+      width:126px;height:52px;border-radius:15px;
+    }
+    #btnSavePointDock .savePointIcon{width:36px;height:36px;border-radius:11px;}
+  }
+  @media (max-width:560px){
+    .brandWords{display:none;}
+    .brand .mark{width:40px;height:40px;border-radius:11px;}
+    .brand .mark svg{width:27px;height:27px;}
+    #gotoForm{min-width:80px;}
+    #gotoInput{padding-right:8px;text-overflow:ellipsis;}
+    .toolDrawerTop b{font-size:16px;}
+    #toolDrawer{width:min(360px,94vw);padding-left:12px;padding-right:12px;}
+  }
+  @media (max-width:390px){
+    #btnSavePointDock.tabSaveBtn{width:52px;height:52px;padding:7px;border-radius:16px;justify-content:center;}
+    #btnSavePointDock .savePointCopy,#btnSavePointDock .savePointGrip{display:none;}
+    #btnSavePointDock .savePointIcon{width:38px;height:38px;box-shadow:none;}
+    .tabs{padding-left:1px;padding-right:1px;}
+    .tabbtn{font-size:9.5px;padding-inline:0;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}
+  }
 </style>
 </head>
 <body>
@@ -936,9 +1016,9 @@
 <div id="filewarn" hidden>⚠️ Trang đang mở trực tiếp từ file nên trình duyệt có thể chặn GPS và giọng nói. Hãy chạy qua máy chủ cục bộ hoặc mở bản đã triển khai bằng HTTPS trên GitHub Pages.</div>
 
 <header id="topbar">
-  <a class="brand" href="./" title="Về trang chính MD Map"><span class="mark">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="10.3" r="10.3" fill="none" stroke="#fff" stroke-opacity=".3" stroke-width="1" stroke-dasharray="1.4 2.6"/><path d="M12 1.6C7.55 1.6 4 5.25 4 9.7 4 15.75 12 21.6 12 21.6s8-5.85 8-11.9C20 5.25 16.45 1.6 12 1.6Z" fill="#fff"/><circle cx="12" cy="9.4" r="3.3" fill="none" stroke="#15803d" stroke-width="1.3"/><circle cx="12" cy="9.4" r="0.85" fill="#15803d"/><path d="M12 6.6v0.9M12 11.3v0.9M9.1 9.4h0.9M13.9 9.4h0.9" stroke="#15803d" stroke-width="1.1" stroke-linecap="round"/></svg>
-  </span><span class="brandWords"><span class="txt">MD MAP</span><small>WebGIS VN2000 hiện trường</small></span><span class="verBadge" id="appVerBadge" title="Phiên bản ứng dụng"><span id="appVerText">V1.47</span></span></a>
+  <a class="brand" href="./" title="Về trang chính GISVN"><span class="mark">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3.2 7.1 12 2.7l8.8 4.4L12 11.5 3.2 7.1Z" fill="#fff"/><path d="m3.2 11.3 8.8 4.4 8.8-4.4M3.2 15.5l8.8 4.4 8.8-4.4" fill="none" stroke="#fff" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" opacity=".78"/><circle cx="12" cy="7.1" r="2.35" fill="#0f9d72" stroke="#fff" stroke-width="1.1"/><path d="M12 3.8v1.1m0 4.4v1.1M8.7 7.1h1.1m4.4 0h1.1" stroke="#fff" stroke-width=".9" stroke-linecap="round"/></svg>
+  </span><span class="brandWords"><span class="txt">GISVN</span><small>Bản đồ &amp; tọa độ VN2000</small></span><span class="verBadge" id="appVerBadge" title="Phiên bản ứng dụng"><span id="appVerText">V1.48</span></span></a>
   <form id="gotoForm" autocomplete="off">
     <input id="gotoInput" type="text" placeholder="Tìm tọa độ, mốc hoặc địa chỉ..." aria-label="Tìm tọa độ, mốc hoặc địa chỉ">
     <div id="gotoResults" hidden></div>
@@ -953,7 +1033,7 @@
 
 <div id="installBanner" hidden>
   <span class="installIcon">📲</span>
-  <span class="installText">Thêm MD Map ra màn hình chính để dùng như 1 ứng dụng thật</span>
+  <span class="installText">Thêm GISVN ra màn hình chính để dùng như một ứng dụng hiện trường</span>
   <button type="button" class="btn primary" id="btnInstallNow">Thêm ngay</button>
   <button type="button" class="installClose" id="btnInstallDismiss" title="Đóng">×</button>
 </div>
@@ -1049,6 +1129,16 @@
     </button>
   </div>
 
+  <button type="button" class="tabSaveBtn savePointDock" id="btnSavePointDock"
+    title="Lưu mốc tại tâm bản đồ · Giữ và kéo để di chuyển"
+    aria-label="Lưu mốc tại tâm bản đồ; giữ và kéo để di chuyển nút">
+    <span class="savePointIcon" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2.1"/><path d="M18.5 16.5h4m-2-2v4"/></svg>
+    </span>
+    <span class="savePointCopy"><b>Lưu mốc</b><small>Kéo để di chuyển</small></span>
+    <span class="savePointGrip" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></span>
+  </button>
+
   <div id="toast" hidden></div>
 </div>
 
@@ -1058,17 +1148,17 @@
   <div class="toolDrawerTop"><b>Công cụ WebGIS VN2000</b><button type="button" id="btnCloseToolDrawer" aria-label="Đóng menu">✕</button></div>
   <p class="toolDrawerIntro">Chọn nhóm nghiệp vụ. Bản đồ luôn giữ nguyên vị trí và mức thu phóng khi chuyển công cụ.</p>
   <div class="toolDrawerGrid">
-    <button type="button" class="toolLink" data-open-tab="conv"><span class="toolGlyph">XY</span><b>Tọa độ</b><small>VN2000 · WGS84 · GPS</small></button>
-    <button type="button" class="toolLink" data-open-tab="points"><span class="toolGlyph">M</span><b>Mốc &amp; Điểm</b><small>Lưu · tìm · dẫn hướng</small></button>
-    <button type="button" class="toolLink" data-open-tab="measure"><span class="toolGlyph">△</span><b>Đo &amp; Vùng</b><small>Dài · diện tích · rào ảo</small></button>
-    <button type="button" class="toolLink" data-open-tab="kml"><span class="toolGlyph">GIS</span><b>Dữ liệu</b><small>KML · KMZ · DXF · GPX</small></button>
-    <button type="button" class="toolLink" data-open-tab="route"><span class="toolGlyph">Km</span><b>Đường &amp; Tuyến</b><small>Lý trình · cọc · trắc dọc</small></button>
-    <button type="button" class="toolLink" data-open-tab="flycam"><span class="toolGlyph">◈</span><b>Flycam</b><small>Mô phỏng đường bay 2D</small></button>
+    <button type="button" class="toolLink" data-open-tab="conv"><span class="toolGlyph"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor" stroke="none"/><path d="M12 2v4m0 12v4M2 12h4m12 0h4"/></svg></span><b>Tọa độ</b><small>VN2000 · WGS84 · GPS</small></button>
+    <button type="button" class="toolLink" data-open-tab="points"><span class="toolGlyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s6-5.2 6-11a6 6 0 1 0-12 0c0 5.8 6 11 6 11Z"/><circle cx="12" cy="10" r="2.2"/><path d="M18.5 16.5h4m-2-2v4"/></svg></span><b>Mốc &amp; Điểm</b><small>Lưu · tìm · dẫn hướng</small></button>
+    <button type="button" class="toolLink" data-open-tab="measure"><span class="toolGlyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 17 13-13 3 3L7 20H4v-3Z"/><path d="m13 8 3 3m-6 0 2 2m-5 1 2 2"/></svg></span><b>Đo &amp; Vùng</b><small>Dài · diện tích · rào ảo</small></button>
+    <button type="button" class="toolLink" data-open-tab="kml"><span class="toolGlyph"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 9 4.5-9 4.5-9-4.5L12 3Z"/><path d="m3 12 9 4.5 9-4.5M3 16.5 12 21l9-4.5"/></svg></span><b>Dữ liệu</b><small>KML · KMZ · DXF · GPX</small></button>
+    <button type="button" class="toolLink" data-open-tab="route"><span class="toolGlyph"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="5" cy="18" r="2"/><circle cx="19" cy="6" r="2"/><path d="M7 18c7 0 3-12 10-12"/></svg></span><b>Đường &amp; Tuyến</b><small>Lý trình · cọc · trắc dọc</small></button>
+    <button type="button" class="toolLink" data-open-tab="flycam"><span class="toolGlyph"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="6" height="6" rx="1"/><circle cx="4" cy="4" r="2"/><circle cx="20" cy="4" r="2"/><circle cx="4" cy="20" r="2"/><circle cx="20" cy="20" r="2"/><path d="m6 6 3 3m9-3-3 3M6 18l3-3m9 3-3-3"/></svg></span><b>Flycam</b><small>Mô phỏng đường bay 2D</small></button>
   </div>
   <div class="toolDrawerQuick">
-    <button type="button" class="toolQuick" id="toolQuickGps">⌖<br>GPS</button>
-    <button type="button" class="toolQuick" id="toolQuickPhoto">◉<br>Chụp ảnh</button>
-    <button type="button" class="toolQuick" id="toolQuickSettings">⚙<br>Cài đặt</button>
+    <button type="button" class="toolQuick" id="toolQuickGps"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 2v3m0 14v3M2 12h3m14 0h3"/></svg><span>GPS</span></button>
+    <button type="button" class="toolQuick" id="toolQuickPhoto"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h4l1.4-2h5.2L16 7h4v12H4V7Z"/><circle cx="12" cy="13" r="3.5"/></svg><span>Chụp ảnh</span></button>
+    <button type="button" class="toolQuick" id="toolQuickSettings"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.4 1A8 8 0 0 0 14.8 6L14.5 3h-5L9.2 6a8 8 0 0 0-1.7 1.1l-2.4-1-2 3.4 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.4-1A8 8 0 0 0 9.2 18l.3 3h5l.3-3a8 8 0 0 0 1.7-1.1l2.4 1 2-3.4-2-1.5c.1-.3.1-.7.1-1Z"/></svg><span>Cài đặt</span></button>
   </div>
 </aside>
 
@@ -1105,10 +1195,6 @@
     <button class="tabbtn" data-tab="flycam">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="6" height="6" rx="1"/><circle cx="4" cy="4" r="2.2"/><circle cx="20" cy="4" r="2.2"/><circle cx="4" cy="20" r="2.2"/><circle cx="20" cy="20" r="2.2"/><path d="M6.2 5.8 9.3 9M17.8 5.8 14.7 9M6.2 18.2 9.3 15M17.8 18.2 14.7 15"/></svg>
       Flycam
-    </button>
-    <button type="button" class="tabSaveBtn" id="btnSavePointDock" title="Lưu mốc tại tâm bản đồ">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h12l2 2v16H5z"/><path d="M8 3v6h8V3M8 21v-7h8v7"/></svg>
-      <span>Lưu mốc</span>
     </button>
   </div>
 
@@ -1670,7 +1756,7 @@
     </div>
     <div class="card">
       <div class="card-title">Thêm ra màn hình chính</div>
-      <div class="note" style="margin-bottom:8px;">Dùng MD Map như 1 ứng dụng thật trên điện thoại — có icon riêng, mở toàn màn hình, không thanh địa chỉ trình duyệt.</div>
+      <div class="note" style="margin-bottom:8px;">Dùng GISVN như một ứng dụng hiện trường trên điện thoại — có icon riêng, mở toàn màn hình và không có thanh địa chỉ trình duyệt.</div>
       <button type="button" class="btn primary block" id="btnInstallFromSettings">📲 Thêm ra màn hình chính</button>
     </div>
     <div class="card">
@@ -1681,7 +1767,7 @@
     </div>
     <div class="card">
       <div class="card-title">Về ứng dụng</div>
-      <div class="note">MD Map <span id="settingsVer" class="verBadge" style="vertical-align:middle;"></span> — WebGIS VN2000 chạy hoàn toàn trong trình duyệt, không cần cài app. Quy đổi dùng Transverse Mercator (chuỗi Snyder), ellipsoid WGS-84; mục tiêu định vị tham khảo khoảng 1–2 m khi chọn đúng múi và hiệu chỉnh bằng mốc tin cậy. Không thay thế hồ sơ hoặc thiết bị trắc địa chuyên dụng.</div>
+      <div class="note">GISVN <span id="settingsVer" class="verBadge" style="vertical-align:middle;"></span> — WebGIS VN2000 chạy hoàn toàn trong trình duyệt, không cần cài app. Quy đổi dùng Transverse Mercator (chuỗi Snyder), ellipsoid WGS-84; mục tiêu định vị tham khảo khoảng 1–2 m khi chọn đúng múi và hiệu chỉnh bằng mốc tin cậy. Không thay thế hồ sơ hoặc thiết bị trắc địa chuyên dụng.</div>
     </div>
   </div>
 </div>
@@ -1745,7 +1831,7 @@
 
     <div class="stampSecLabel">Tiêu đề trên cùng</div>
     <div class="stampTitleRow">
-      <input type="text" id="stampTitleInput" placeholder="VD: MD Map">
+      <input type="text" id="stampTitleInput" placeholder="VD: GISVN">
       <button type="button" id="btnStampTitleToggle" class="stampToggleSm">👁 Hiện</button>
     </div>
 
@@ -1995,11 +2081,11 @@ function saveLocalCalibToStorage(){
   }catch(e){}
 }
 function backupDataToFile(){
-  var data = { _meta:{ app:'MD Map', exportedAt:new Date().toISOString() } };
+  var data = { _meta:{ app:'GISVN', exportedAt:new Date().toISOString() } };
   try{
     Object.keys(localStorage).filter(function(k){ return k.indexOf('mdmap.')===0; }).forEach(function(k){ data[k] = localStorage.getItem(k); });
   }catch(e){}
-  downloadBlob(JSON.stringify(data, null, 2), 'application/json', 'mdmap_saoluu_'+Date.now()+'.json');
+  downloadBlob(JSON.stringify(data, null, 2), 'application/json', 'gisvn_saoluu_'+Date.now()+'.json');
 }
 function restoreDataFromFile(file){
   file.text().then(function(text){
@@ -2010,7 +2096,7 @@ function restoreDataFromFile(file){
     Object.keys(data).forEach(function(k){
       if(k.indexOf('mdmap.')===0){ try{ localStorage.setItem(k, data[k]); count++; }catch(e){} }
     });
-    if(!count){ showToast('Không tìm thấy dữ liệu MD Map hợp lệ trong file này.', 'err'); return; }
+    if(!count){ showToast('Không tìm thấy dữ liệu GISVN hợp lệ trong file này.', 'err'); return; }
     showToast('Đã khôi phục '+count+' mục — đang tải lại trang…', 'ok', 2500);
     setTimeout(function(){ location.reload(); }, 1200);
   }).catch(function(){ showToast('Không đọc được file.', 'err'); });
@@ -2091,6 +2177,121 @@ function escapeHtml(s){
 function fmtDist(m){
   if(m>=1000) return (m/1000).toFixed(2)+' km';
   return Math.round(m)+' m';
+}
+/* Nút Lưu mốc là tác vụ nổi dùng chung cho desktop/mobile. Vị trí được lưu theo tỷ lệ
+   thay vì pixel để vẫn hợp lý khi xoay màn hình hoặc mở trên thiết bị có kích thước khác. */
+function initDraggableSaveButton(){
+  var btn = document.getElementById('btnSavePointDock');
+  var host = document.getElementById('mapWrap');
+  if(!btn || !host || !window.PointerEvent) return;
+  var STORAGE_KEY = 'mdmap.savePointDockPos';
+  var drag = null;
+  var moved = false;
+  var resizeTimer = null;
+
+  function limits(){
+    var hostRect = host.getBoundingClientRect();
+    var btnRect = btn.getBoundingClientRect();
+    var mobile = window.innerWidth <= 860;
+    var minX = mobile ? 8 : 84;
+    var minY = 8;
+    var reserveBottom = mobile ? 78 : 12;
+    return {
+      hostRect:hostRect,
+      minX:minX,
+      minY:minY,
+      maxX:Math.max(minX, hostRect.width-btnRect.width-8),
+      maxY:Math.max(minY, hostRect.height-btnRect.height-reserveBottom)
+    };
+  }
+  function clamp(value, min, max){ return Math.max(min, Math.min(max, value)); }
+  function setPixels(left, top){
+    var lim = limits();
+    btn.style.right = 'auto';
+    btn.style.bottom = 'auto';
+    btn.style.left = clamp(left, lim.minX, lim.maxX) + 'px';
+    btn.style.top = clamp(top, lim.minY, lim.maxY) + 'px';
+  }
+  function readStored(){
+    var raw = null;
+    try{ raw = localStorage.getItem(STORAGE_KEY); }catch(e){}
+    if(!raw) return null;
+    try{
+      var pos = JSON.parse(raw);
+      if(Number.isFinite(pos.x) && Number.isFinite(pos.y)){
+        return { x:clamp(pos.x,0,1), y:clamp(pos.y,0,1) };
+      }
+    }catch(e){}
+    return null;
+  }
+  function applyNormalized(pos){
+    if(!pos) return;
+    var lim = limits();
+    setPixels(
+      lim.minX + pos.x * Math.max(0,lim.maxX-lim.minX),
+      lim.minY + pos.y * Math.max(0,lim.maxY-lim.minY)
+    );
+  }
+  function savePosition(){
+    var lim = limits();
+    var left = parseFloat(btn.style.left);
+    var top = parseFloat(btn.style.top);
+    if(!Number.isFinite(left) || !Number.isFinite(top)) return;
+    var xSpan = Math.max(1,lim.maxX-lim.minX);
+    var ySpan = Math.max(1,lim.maxY-lim.minY);
+    try{
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({
+        x:clamp((left-lim.minX)/xSpan,0,1),
+        y:clamp((top-lim.minY)/ySpan,0,1)
+      }));
+    }catch(e){}
+  }
+  function endDrag(e){
+    if(!drag || (e.pointerId!=null && e.pointerId!==drag.pointerId)) return;
+    if(moved){
+      btn.dataset.justDragged = '1';
+      savePosition();
+      setTimeout(function(){ delete btn.dataset.justDragged; }, 350);
+    }
+    try{ btn.releasePointerCapture(drag.pointerId); }catch(err){}
+    btn.classList.remove('dragging');
+    drag = null;
+  }
+
+  btn.addEventListener('pointerdown', function(e){
+    if(e.pointerType==='mouse' && e.button!==0) return;
+    var lim = limits();
+    var rect = btn.getBoundingClientRect();
+    drag = {
+      pointerId:e.pointerId,
+      startX:e.clientX,
+      startY:e.clientY,
+      left:rect.left-lim.hostRect.left,
+      top:rect.top-lim.hostRect.top
+    };
+    moved = false;
+    btn.setPointerCapture(e.pointerId);
+    btn.classList.add('dragging');
+  });
+  btn.addEventListener('pointermove', function(e){
+    if(!drag || e.pointerId!==drag.pointerId) return;
+    var dx = e.clientX-drag.startX;
+    var dy = e.clientY-drag.startY;
+    if(!moved && Math.hypot(dx,dy)<5) return;
+    moved = true;
+    e.preventDefault();
+    setPixels(drag.left+dx, drag.top+dy);
+  });
+  btn.addEventListener('pointerup', endDrag);
+  btn.addEventListener('pointercancel', endDrag);
+  btn.addEventListener('lostpointercapture', function(){
+    if(drag){ btn.classList.remove('dragging'); drag=null; }
+  });
+  window.addEventListener('resize', function(){
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function(){ applyNormalized(readStored()); }, 120);
+  });
+  requestAnimationFrame(function(){ applyNormalized(readStored()); });
 }
 function roundForSpeech(m){
   if(m>100) return Math.round(m/10)*10;
@@ -2180,7 +2381,7 @@ var ST = {
   lastAcc:null, lastSpeed:null, lastAltitude:null,
   geofence:{ active:false, polygon:null, wasInside:null },
   stampCfg:{
-    template:'full', position:'bottom-left', title:'MD Map', titleVisible:true,
+    template:'full', position:'bottom-left', title:'GISVN', titleVisible:true,
     dateTimeSize:'small',
     fields:{ address:false, latlon:true, vn2000:true, accuracy:false, elevation:false, heading:false },
     bg:'dark', bgOpacity:0.75
@@ -3144,7 +3345,7 @@ function stampPhotoBlob(file, lines){
     img.onload = function(){
       URL.revokeObjectURL(url);
       var baseW = img.naturalWidth, baseH = img.naturalHeight;
-      var wmText = 'MD Map · manhduy.vercel.app/map';
+      var wmText = 'GISVN · vietflexmap.github.io/VN2000/';
       var wmFontSize = Math.max(11, Math.round(baseW * 0.014));
       var wmH = Math.round(wmFontSize * 2.2);
       var canvas = document.createElement('canvas');
@@ -3234,7 +3435,7 @@ function takePhotoAtCenter(file, name, category){
     showLoadingToast('Đang lưu ảnh…');
     return stampPhotoBlob(file, lines);
   }).then(function(finalBlob){
-    downloadBlobAsFile(finalBlob, 'mdmap_' + Date.now() + '.jpg');
+    downloadBlobAsFile(finalBlob, 'gisvn_' + Date.now() + '.jpg');
     return savePhotoBlob(finalBlob, meta);
   }).then(function(){
     document.getElementById('toast').hidden = true;
@@ -3475,8 +3676,8 @@ function exportPointsDxf(){
   ST.savedPoints.forEach(function(p, idx){
     var vn = wgs84ToVn2000(p.lat, p.lon, ST.cmDeg);
     var x = vn.Y.toFixed(3), y = vn.X.toFixed(3); // quy ước CAD: trục X=Đông(Y VN2000), Y=Bắc(X VN2000)
-    add(0,'POINT'); add(8,'MDMAP_DIEM'); add(10,x); add(20,y); add(30,'0');
-    add(0,'TEXT'); add(8,'MDMAP_NHAN'); add(10,x); add(20,y); add(30,'0'); add(40,'2'); add(1, p.name || ('Điểm '+(idx+1)));
+    add(0,'POINT'); add(8,'GISVN_DIEM'); add(10,x); add(20,y); add(30,'0');
+    add(0,'TEXT'); add(8,'GISVN_NHAN'); add(10,x); add(20,y); add(30,'0'); add(40,'2'); add(1, p.name || ('Điểm '+(idx+1)));
   });
   add(0,'ENDSEC'); add(0,'EOF');
   downloadBlob(g.join('\r\n'), 'application/dxf', 'diem_lotrinh_'+Date.now()+'.dxf');
@@ -3857,13 +4058,13 @@ function exportTrackGpx(){
   var pts = ST.trackPoints.map(function(p){
     return '      <trkpt lat="'+p.lat.toFixed(7)+'" lon="'+p.lon.toFixed(7)+'"><time>'+new Date(p.t).toISOString()+'</time></trkpt>';
   }).join('\n');
-  var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="MD Map" xmlns="http://www.topografix.com/GPX/1/1">\n  <trk><name>Tuyến MD Map</name><trkseg>\n'+pts+'\n  </trkseg></trk>\n</gpx>';
+  var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="GISVN" xmlns="http://www.topografix.com/GPX/1/1">\n  <trk><name>Tuyến GISVN</name><trkseg>\n'+pts+'\n  </trkseg></trk>\n</gpx>';
   downloadBlob(gpx, 'application/gpx+xml', 'track_'+Date.now()+'.gpx');
 }
 function exportTrackKml(){
   if(!ST.trackPoints.length){ showToast('Chưa có điểm nào để xuất — hãy ghi track trước.', 'err'); return; }
   var coords = ST.trackPoints.map(function(p){ return p.lon.toFixed(7)+','+p.lat.toFixed(7)+',0'; }).join(' ');
-  var kml = '<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><Placemark><name>Tuyến MD Map</name><LineString><coordinates>'+coords+'</coordinates></LineString></Placemark></Document></kml>';
+  var kml = '<?xml version="1.0" encoding="UTF-8"?>\n<kml xmlns="http://www.opengis.net/kml/2.2"><Document><Placemark><name>Tuyến GISVN</name><LineString><coordinates>'+coords+'</coordinates></LineString></Placemark></Document></kml>';
   downloadBlob(kml, 'application/vnd.google-earth.kml+xml', 'track_'+Date.now()+'.kml');
 }
 
@@ -5034,8 +5235,8 @@ function exportStakesDxf(){
   ST.rt.stakes.forEach(function(s){
     var vn = wgs84ToVn2000(s.lat, s.lon, ST.cmDeg);
     var x = vn.Y.toFixed(3), y = vn.X.toFixed(3);
-    add(0,'POINT'); add(8,'MDMAP_COC'); add(10,x); add(20,y); add(30,'0');
-    add(0,'TEXT'); add(8,'MDMAP_COC_NHAN'); add(10,x); add(20,y); add(30,'0'); add(40,'2'); add(1, s.name);
+    add(0,'POINT'); add(8,'GISVN_COC'); add(10,x); add(20,y); add(30,'0');
+    add(0,'TEXT'); add(8,'GISVN_COC_NHAN'); add(10,x); add(20,y); add(30,'0'); add(40,'2'); add(1, s.name);
   });
   add(0,'ENDSEC'); add(0,'EOF');
   downloadBlob(g.join('\r\n'), 'application/dxf', 'coc_tuyen_'+Date.now()+'.dxf');
@@ -6256,7 +6457,14 @@ function wireUi(){
   document.getElementById('pointsSearch').addEventListener('input', function(e){ renderPointsList(e.target.value); });
   document.getElementById('btnPointsClear').addEventListener('click', clearSavedPoints);
   document.getElementById('btnSavePoint').addEventListener('click', saveAimPoint);
-  document.getElementById('btnSavePointDock').addEventListener('click', saveAimPoint);
+  initDraggableSaveButton();
+  document.getElementById('btnSavePointDock').addEventListener('click', function(e){
+    if(this.dataset.justDragged==='1'){
+      e.preventDefault();
+      return;
+    }
+    saveAimPoint();
+  });
   document.getElementById('btnAddAtCenter').addEventListener('click', saveAimPoint);
   document.getElementById('btnAddByTap').addEventListener('click', function(){ document.getElementById('btnPickMode').click(); });
   document.querySelectorAll('.routeModeBtn').forEach(function(btn){
@@ -6336,7 +6544,7 @@ function wireUi(){
   document.getElementById('btnTrackLogGpx').addEventListener('click', function(){
     if(!ST.trackLog.length){ showToast('Chưa có vết nào để xuất.', 'err'); return; }
     var pts = ST.trackLog.map(function(c){ return '      <trkpt lat="'+c[0].toFixed(7)+'" lon="'+c[1].toFixed(7)+'"></trkpt>'; }).join('\n');
-    var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="MD Map" xmlns="http://www.topografix.com/GPX/1/1">\n  <trk><name>Nhật ký đi tuyến</name><trkseg>\n'+pts+'\n  </trkseg></trk>\n</gpx>';
+    var gpx = '<?xml version="1.0" encoding="UTF-8"?>\n<gpx version="1.1" creator="GISVN" xmlns="http://www.topografix.com/GPX/1/1">\n  <trk><name>Nhật ký đi tuyến</name><trkseg>\n'+pts+'\n  </trkseg></trk>\n</gpx>';
     downloadBlob(gpx, 'application/gpx+xml', 'nhatky_tuyen_'+Date.now()+'.gpx');
   });
   document.getElementById('btnPointsKml').addEventListener('click', exportPointsKml);
@@ -6977,7 +7185,7 @@ function loadSettingsFromStorage(){
   document.querySelectorAll('.outdoorBtn').forEach(function(b){ b.classList.toggle('primary', (b.dataset.v==='1')===ST.outdoorMode); });
 }
 /* ===================== Phiên bản + PWA "Thêm ra màn hình chính" ===================== */
-var APP_VERSION = 'V1.47';
+var APP_VERSION = 'V1.48';
 var deferredInstallPrompt = null;
 window.addEventListener('beforeinstallprompt', function(e){
   e.preventDefault();

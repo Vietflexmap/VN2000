@@ -23,6 +23,10 @@ assert(!html.includes('href="/map'), 'Còn đường dẫn tuyệt đối /map t
 assert(!html.includes("register('/map"), 'Còn scope Service Worker tuyệt đối /map');
 assert(!html.includes('.google.com/vt/'), 'Còn endpoint tile Google không chính thức');
 assert(!html.includes('setInterval(function(){ debugger;'), 'Còn anti-debugger trong bản phát hành');
+assert(html.includes('<span class="txt">GISVN</span>'), 'Thiếu thương hiệu GISVN trên thanh đầu trang');
+assert(!html.includes('MD Map') && !html.includes('MD MAP'), 'Còn thương hiệu MD Map trong giao diện');
+assert(html.includes('function initDraggableSaveButton()'), 'Thiếu hành vi kéo nút Lưu mốc');
+assert(html.includes('class="tabSaveBtn savePointDock" id="btnSavePointDock"'), 'Thiếu nút Lưu mốc nổi');
 
 const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map((match) => match[1]);
 inlineScripts.forEach((source, index) => {
@@ -37,6 +41,7 @@ inlineScripts.forEach((source, index) => {
 const manifest = JSON.parse(fs.readFileSync(path.join(root, 'manifest.webmanifest'), 'utf8'));
 assert(manifest.start_url === './', 'Manifest start_url phải tương đối cho GitHub Project Pages');
 assert(manifest.scope === './', 'Manifest scope phải tương đối cho GitHub Project Pages');
+assert(manifest.short_name === 'GISVN', 'Manifest phải hiển thị tên GISVN');
 
 for (const requiredText of [
   'Khu vực &amp; Múi chiếu VN2000',

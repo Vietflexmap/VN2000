@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mdmap-v147-pages-1';
+const CACHE_NAME = 'gisvn-v148-pages-1';
 const APP_SHELL = [
   './',
   './index.html',

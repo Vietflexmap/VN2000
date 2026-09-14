@@ -1,8 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="112" fill="#0b6bcb"/>
-  <path d="M80 367c74-58 120-65 181-30 57 33 102 27 171-34M73 273c69-50 121-55 183-21 59 32 106 22 181-42M83 178c70-45 119-45 176-14 57 31 105 21 170-23" fill="none" stroke="#8fd0ff" stroke-width="18" stroke-linecap="round" opacity=".85"/>
-  <path d="M256 86c-69 0-125 56-125 125 0 96 125 215 125 215s125-119 125-215c0-69-56-125-125-125Z" fill="#fff"/>
-  <circle cx="256" cy="211" r="55" fill="#eaf3ff" stroke="#0b6bcb" stroke-width="16"/>
-  <path d="M256 134v36m0 82v36m-77-77h36m82 0h36" stroke="#0b6bcb" stroke-width="15" stroke-linecap="round"/>
-  <circle cx="256" cy="211" r="10" fill="#0f9d72"/>
+  <defs>
+    <linearGradient id="blue" x1="70" y1="55" x2="446" y2="470" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0759aa"/>
+      <stop offset=".68" stop-color="#0b6bcb"/>
+      <stop offset="1" stop-color="#1284d8"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="14" stdDeviation="12" flood-color="#003b70" flood-opacity=".24"/>
+    </filter>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#blue)"/>
+  <path d="M46 379c80-66 142-73 211-34 65 37 124 28 210-45M42 270c80-58 142-63 214-24 67 37 127 24 215-50M55 166c77-49 137-50 204-13 64 35 120 23 198-30" fill="none" stroke="#8fd0ff" stroke-width="15" stroke-linecap="round" opacity=".38"/>
+  <g filter="url(#shadow)" stroke-linejoin="round">
+    <path d="m256 98 156 78-156 78-156-78 156-78Z" fill="#fff"/>
+    <path d="m100 251 156 78 156-78" fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round" opacity=".82"/>
+    <path d="m100 330 156 78 156-78" fill="none" stroke="#fff" stroke-width="26" stroke-linecap="round" opacity=".62"/>
+  </g>
+  <circle cx="256" cy="176" r="48" fill="#0f9d72" stroke="#fff" stroke-width="14"/>
+  <circle cx="256" cy="176" r="12" fill="#fff"/>
+  <path d="M256 112v28m0 72v28m-80-64h32m96 0h32" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
 </svg>
