@@ -1,0 +1,12 @@
+{
+  "name": "vietflexmap-vn2000",
+  "version": "1.47.0",
+  "private": true,
+  "description": "Static WebGIS VN2000 for GitHub Pages",
+  "scripts": {
+    "test": "node scripts/validate.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
