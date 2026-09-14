@@ -2583,7 +2583,7 @@ function initMap(){
     dropTempMarkerSilent(e.latlng.lat, e.latlng.lng);
   });
   var longPressTimer = null, longPressLatLng = null;
-  ST.map.on('mousedown', function(e){
+  ST.map.on('pointerdown', function(e){
     if(ST.measureActive || ST.pickMode || ST.flycam.picking || (ST.rt.draw.active && ST.rt.draw.tapMode)) return;
     longPressLatLng = e.latlng;
     longPressTimer = setTimeout(function(){
@@ -2591,7 +2591,7 @@ function initMap(){
       if(longPressLatLng) dropTempMarker(longPressLatLng.lat, longPressLatLng.lng);
     }, 550);
   });
-  ST.map.on('mouseup dragstart zoomstart', function(){
+  ST.map.on('pointerup dragstart zoomstart', function(){
     if(longPressTimer){ clearTimeout(longPressTimer); longPressTimer = null; }
     longPressLatLng = null;
   });

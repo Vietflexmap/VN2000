@@ -1,4 +1,4 @@
-const CACHE_NAME = 'gisvn-v149-pages-1';
+const CACHE_NAME = 'gisvn-v149-pages-2';
 const APP_SHELL = [
   './',
   './index.html',
