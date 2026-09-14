@@ -1,14 +1,17 @@
-const CACHE_NAME = 'gisvn-v148-pages-1';
+const CACHE_NAME = 'gisvn-v149-pages-1';
 const APP_SHELL = [
   './',
   './index.html',
   './offline.html',
   './manifest.webmanifest',
-  './vendor/leaflet.min.css',
+  './vendor/vietflex.css',
   './vendor/MarkerCluster.css',
   './vendor/MarkerCluster.Default.css',
-  './vendor/leaflet.min.js',
+  './vendor/vietflex.js',
+  './vendor/vietflex-leaflet-compat.js',
   './vendor/leaflet.markercluster.js',
+  './vendor/images/layers.svg',
+  './vendor/images/marker-icon.svg',
   './icons/icon-32.png',
   './icons/icon-180.png',
   './icons/icon-192.png',

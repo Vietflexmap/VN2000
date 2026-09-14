@@ -21,12 +21,18 @@ for (const ref of localRefs) {
 
 assert(!html.includes('href="/map'), 'Còn đường dẫn tuyệt đối /map trong href');
 assert(!html.includes("register('/map"), 'Còn scope Service Worker tuyệt đối /map');
-assert(!html.includes('.google.com/vt/'), 'Còn endpoint tile Google không chính thức');
 assert(!html.includes('setInterval(function(){ debugger;'), 'Còn anti-debugger trong bản phát hành');
 assert(html.includes('<span class="txt">GISVN</span>'), 'Thiếu thương hiệu GISVN trên thanh đầu trang');
 assert(!html.includes('MD Map') && !html.includes('MD MAP'), 'Còn thương hiệu MD Map trong giao diện');
 assert(html.includes('function initDraggableSaveButton()'), 'Thiếu hành vi kéo nút Lưu mốc');
 assert(html.includes('class="tabSaveBtn savePointDock" id="btnSavePointDock"'), 'Thiếu nút Lưu mốc nổi');
+assert(html.includes('./vendor/vietflex.css'), 'Thiếu stylesheet Vietflex');
+assert(html.includes('./vendor/vietflex.js'), 'Thiếu runtime Vietflex');
+assert(html.includes('./vendor/vietflex-leaflet-compat.js'), 'Thiếu adapter Vietflex cho công cụ GIS');
+assert(!html.includes('./vendor/leaflet.min.css') && !html.includes('./vendor/leaflet.min.js'), 'Vẫn còn nạp runtime Leaflet cũ');
+assert(html.includes("Vietflex.vietflexMap('map'"), 'Bản đồ chưa khởi tạo bằng Vietflex');
+assert(html.includes('useLegacyGoogleTiles:true'), 'Thiếu cấu hình lớp nền Vietflex đã được yêu cầu');
+assert(html.includes('new Vietflex.AttributionControl'), 'Thiếu attribution Vietflex');
 
 const inlineScripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/gi)].map((match) => match[1]);
 inlineScripts.forEach((source, index) => {
